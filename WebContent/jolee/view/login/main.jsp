@@ -1,0 +1,8 @@
+<%@page import="req.MemberVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+	MemberVO vo = (MemberVO)session.getAttribute("mem");
+%>
+<%=vo.getName() %>´Ô ¾È³çÇÏ¼¼¿ä
+<a href="../../login/logout.jsp?goUrl=<%=(String)request.getAttribute("nowUrl")%>">·Î±×¾Æ¿ô</a>
