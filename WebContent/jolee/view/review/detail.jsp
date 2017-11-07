@@ -18,8 +18,6 @@
 	<tr>
 		<td>content</td><td><%=vo.getContent() %></td>
 	</tr>
-
-
 	<tr>
 		<td colspan="2" align="right">
 			<a href="index.jsp">list</a>
