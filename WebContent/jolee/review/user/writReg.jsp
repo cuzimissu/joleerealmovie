@@ -20,7 +20,7 @@
 	//request.setCharacterEncoding("euc-kr");
 	ReviewVO re = new ReviewVO();
 	//임시 아이디 멤버 제작되면 넣을 예정
-	session.setAttribute("mem", "cc");
+	session.setAttribute("mem", "ss");
 	String id = (String) session.getAttribute("mem");
 
 
@@ -28,7 +28,7 @@
 
 
 	//re.setCate((String)request.getAttribute("cate"));
-	re.setCate("first");
+	re.setCate("user");
 	re.setNo(new ReviewDAO().noseting());
 	re.setId(id);
 	re.setTitle(mm.getParameter("title"));
@@ -37,7 +37,7 @@
 	re.setSysfile(mm.getFilesystemName("pic")); 
 	/*re.setOrifile(request.getParameter("pic"));
 	re.setSysfile(request.getParameter("pic"));*/
-	re.setMovietitle(mm.getParameter("movietitle"));
+	re.setMovietitle(mm.getParameter("movie"));
 	re.setGenre(genre);
 	re.setStar(Integer.parseInt(mm.getParameter("star")));
 
