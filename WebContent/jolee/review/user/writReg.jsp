@@ -11,7 +11,7 @@
 <%
 	String upfile = request.getRealPath("file");
 
-	upfile = "F:\\webwork\\joleerealmovie\\WebContent\\jolee\\file";
+upfile = "C:/file";
 	MultipartRequest mm = new MultipartRequest(request, upfile, 10 * 1024 * 1024, "euc-kr",
 			new DefaultFileRenamePolicy());
 
@@ -31,11 +31,8 @@
 	re.setSysfile(mm.getFilesystemName("pic"));
 	re.setMovietitle(mm.getParameter("movie"));
 	re.setGenre(genre);
-<<<<<<< HEAD
 	re.setStar(Double.parseDouble(mm.getParameter("star")));
-=======
-	re.setStar(Integer.parseInt(mm.getParameter("star")));
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
+
 
 	ReviewDAO dao = new ReviewDAO();
 	dao.insert(re);

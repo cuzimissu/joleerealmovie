@@ -11,11 +11,9 @@
 <%
 String upfile = request.getRealPath("file");
 
-<<<<<<< HEAD
-	upfile = "C:/Users/JHTA/git/jolee/joleemovie/WebContent/jolee/file";
-=======
-upfile = "F:\\webwork\\joleerealmovie\\WebContent\\jolee\\file";
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
+
+	upfile = "C:/file";
+
 	MultipartRequest mm = new MultipartRequest(request,
 			upfile, 10 * 1024 * 1024,
 			"euc-kr",

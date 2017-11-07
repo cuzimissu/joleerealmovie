@@ -89,13 +89,10 @@ public class ReviewDAO {
 				res.setSysfile(rs.getString("sysfile"));
 				res.setMovietitle(rs.getString("movietitle"));
 				res.setGenre(rs.getString("genre"));
-<<<<<<< HEAD
+
 				res.setStar(rs.getDouble("star"));
 				
-=======
-				res.setStar(rs.getInt("star"));
 
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 			}
 
 		} catch (SQLException e) {
@@ -132,13 +129,9 @@ public class ReviewDAO {
 			stmt.setString(7, re.getSysfile());
 			stmt.setString(8, re.getMovietitle());
 			stmt.setString(9, re.getGenre());
-<<<<<<< HEAD
-			stmt.setDouble(10,re.getStar());
-			
-=======
-			stmt.setInt(10, re.getStar());
 
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
+			stmt.setDouble(10,re.getStar());
+
 			System.out.println(stmt.executeUpdate());
 
 		} catch (Exception e) {
