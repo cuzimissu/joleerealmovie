@@ -30,7 +30,7 @@ public class movieDAO {
 	public ArrayList<movieVO> list(){
 		ArrayList<movieVO> res =new ArrayList<>();
 		try {
-			sql = "select * from movieinfo";
+			sql = "select * from movieinfo  order by title asc";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			while(rs.next())
@@ -114,6 +114,65 @@ public class movieDAO {
 		}
 		return res;
 	}
+	public ArrayList<movieVO> search2(String genre, String genre2){
+		ArrayList<movieVO> res =new ArrayList<>();
+		try {
+			sql = "select * from movieinfo (where genre like ?) and ( where genre like ?)";
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, "%"+genre+"%");
+			stmt.setString(2, "%"+genre2+"%");
+
+			rs = stmt.executeQuery();
+			while(rs.next())
+			{
+				movieVO vo = new movieVO();
+				vo.setNo(rs.getInt("no"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setReldate(rs.getString("reldate"));
+				vo.setClosedate(rs.getString("closedate"));
+				vo.setGenre(rs.getString("genre"));					
+				vo.setRegdate(rs.getDate("regdate"));					
+				res.add(vo);
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
+	public ArrayList<movieVO> search3(String genre, String genre2, String genre3){
+		ArrayList<movieVO> res =new ArrayList<>();
+		try {
+			sql = "select * from movieinfo (where genre like ?) and ( where genre like ?)and ( where genre like ?)";
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, "%"+genre+"%");
+			stmt.setString(2, "%"+genre2+"%");
+			stmt.setString(3, "%"+genre3+"%");
+			rs = stmt.executeQuery();
+			while(rs.next())
+			{
+				movieVO vo = new movieVO();
+				vo.setNo(rs.getInt("no"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setReldate(rs.getString("reldate"));
+				vo.setClosedate(rs.getString("closedate"));
+				vo.setGenre(rs.getString("genre"));					
+				vo.setRegdate(rs.getDate("regdate"));					
+				res.add(vo);
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
+	
 	
 	public ArrayList<movieVO> ing(){
 		ArrayList<movieVO> res =new ArrayList<>();
@@ -163,44 +222,32 @@ public class movieDAO {
 		return res;
 	}
 	
-	public movieVO detail(int no)
-	{
+	public movieVO detail(int no){
 		movieVO res =null;
-
 		try {
 			sql = "select * from movieinfo where no = ?";
-			
 			stmt = con.prepareStatement(sql);
-			
-			stmt.setInt(1, no);
+			stmt.setInt(1,no);
 			
 			rs = stmt.executeQuery();
-			
-			if(rs.next())
-			{
+			if(rs.next()){
 				res = new movieVO();
 				
 				res.setNo(rs.getInt("no"));
 				res.setTitle(rs.getString("title"));
-				
 				res.setContent(rs.getString("content"));
 				res.setRegdate(rs.getTimestamp("regDate"));
 				res.setReldate(rs.getString("reldate"));
 				res.setClosedate(rs.getString("closedate"));
 				res.setSysfile(rs.getString("sysfile"));
-				
-			}
-			
-			
-			
-		} catch (SQLException e) {
+				res.setOrifile(rs.getString("orifile"));
+			}	
+		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();
-		}
-		
-		return res;
+		}return res;
 	}
 	
 	

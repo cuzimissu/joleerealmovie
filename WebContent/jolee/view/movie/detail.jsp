@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
-	
+
 	movieVO vo = (movieVO )request.getAttribute("data");
 System.out.println(vo);
 %>    
@@ -20,6 +20,7 @@ System.out.println(vo);
 	<tr>
 		<td>사진</td><td><img src="../../file/<%=vo.getSysfile() %>" width="500"></td>
 	</tr>
+	<td>포스터 다운로드</td><td><a href="download.jsp?Sysfile=<%=vo.getSysfile() %>&Orifile=<%=vo.getOrifile() %>" ><%=vo.getOrifile() %></a></td>
 	<tr>
 		<td>개봉일</td><td><%=vo.getReldate() %></td>
 	</tr>
