@@ -4,11 +4,11 @@ import java.io.File;
 
 public class PicFile {
 
-	void fileDelete(ReviewVO re )
+	void fileDelete(ReviewVO vo )
 	{
-		if(re.sysfile!=null && !re.sysfile.equals("")&& !re.sysfile.equals("null"))
+		if(vo.sysfile!=null && !vo.sysfile.equals("")&& !vo.sysfile.equals("null"))
 		{
-			File ff = new File(re.path+"\\"+re.sysfile);
+			File ff = new File(vo.path+"\\"+vo.sysfile);
 			ff.delete();
 		}
 	}

@@ -1,26 +1,28 @@
-<%@page import="req.GalleryVO"%>
+<%@page import="movie.ReviewVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="req.GalleryDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
 	
-	GalleryVO vo = (GalleryVO )request.getAttribute("data");
-System.out.println(vo);
+	ReviewVO vo = (ReviewVO)request.getAttribute("data");
 %>    
 
 <table border="">
 	<tr>
-		<td>번호</td><td><%=vo.getNum() %></td>
-	</tr><tr>
-		<td>이미지</td><td>
-		<img src="../../../img/cate/<%=vo.getName() %>"  alt="" /></td>
+		<td>title</td><td><%=vo.getTitle() %></td>
+	</tr>
+	<tr>
+		<td>id</td><td><%=vo.getId() %></td>
+	</tr>
+	<tr>
+		<td>content</td><td><%=vo.getContent() %></td>
 	</tr>
 
 
 	<tr>
 		<td colspan="2" align="right">
-			<a href="index.jsp">목록</a>
+			<a href="index.jsp">list</a>
 		</td>
 	</tr>
 </table>

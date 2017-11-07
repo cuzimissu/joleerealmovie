@@ -36,14 +36,15 @@ public class ReviewDAO {
 		
 	}
 	
-	public ArrayList<ReviewVO> list()
+	public ArrayList<ReviewVO> list(String cate)
 	{
 		ArrayList<ReviewVO> res =new ArrayList<>();
 
 		try {
-			sql = "select * from moviereview";
+			sql = "select * from moviereview where cate = ? order by regdate desc";
 			
 			stmt = con.prepareStatement(sql);
+			stmt.setString(1, cate);
 			rs = stmt.executeQuery();
 			
 			while(rs.next())
@@ -53,7 +54,9 @@ public class ReviewDAO {
 				vo.setNo(rs.getInt("no"));
 				vo.setTitle(rs.getString("title"));
 				vo.setId(rs.getString("id"));
-				vo.setCate(rs.getString("cate"));
+				vo.setStar(rs.getInt("star"));
+				vo.setMovietitle(rs.getString("movietitle"));
+				vo.setRegDate(rs.getTimestamp("regdate"));
 				res.add(vo);
 			}
 			
@@ -70,27 +73,33 @@ public class ReviewDAO {
 	}
 	
 	
-	public ReviewVO detail(String id)
+	public ReviewVO detail(int no)
 	{
 		ReviewVO res =null;
 
 		try {
-			sql = "select * from moviereview where cate = ? and no = ?";
+			sql = "select * from moviereview where no = ?";
 			
 			stmt = con.prepareStatement(sql);
-			
-			stmt.setString(1, res.getCate());
-			stmt.setInt(2, res.getNo());
+			//stmt.setString(1, res.getCate());
+			stmt.setInt(1, no);
 			rs = stmt.executeQuery();
 			
 			if(rs.next())
 			{
 				res = new ReviewVO();
 				
+				res.setRegDate(rs.getTimestamp("regdate"));
+				res.setCate(rs.getString("cate"));
+				res.setNo(rs.getInt("no"));
+				res.setTitle(rs.getString("title"));
 				res.setId(rs.getString("id"));
 				res.setContent(rs.getString("content"));
-				res.setRegDate(rs.getTimestamp("reg_date"));
-				
+				res.setOrifile(rs.getString("orifile"));
+				res.setSysfile(rs.getString("sysfile"));
+				res.setMovietitle(rs.getString("movietitle"));
+				res.setGenre(rs.getString("genre"));
+				res.setStar(rs.getInt("star"));
 				
 			}
 			
@@ -106,7 +115,32 @@ public class ReviewDAO {
 		return res;
 	}
 	
-	
+	public int noseting(){
+		int no = 0;
+
+		try {
+			sql = "SELECT MAX(no) \"Maximum\" from MOVIEREVIEW";
+			
+			stmt = con.prepareStatement(sql);
+
+			rs = stmt.executeQuery();
+			
+			while(rs.next())
+			{
+				no = rs.getInt("no");
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return no;
+	}
 	
 	public void insert(ReviewVO re )
 	{
