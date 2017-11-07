@@ -9,9 +9,9 @@
 리뷰
 <%@ include file="../../inc/menuData.jsp" %>
 <%
-	String upfile = request.getRealPath("ff");
+String upfile = request.getRealPath("file");
 
-	upfile = "E:\\public\\webwork\\jspProj\\WebContent\\ff";
+upfile = "F:\\webwork\\joleerealmovie\\WebContent\\jolee\\file";
 	MultipartRequest mm = new MultipartRequest(request,
 			upfile, 10 * 1024 * 1024,
 			"euc-kr",
@@ -21,7 +21,7 @@
 	ReviewVO re = new ReviewVO();
 	//임시 아이디 멤버 제작되면 넣을 예정
 	session.setAttribute("mem", "cc");
-	String id = (String) session.getAttribute("mem");
+	String id = (String)session.getAttribute("mem");
 
 
 	String genre = "코미디,액션";
@@ -30,6 +30,7 @@
 	//re.setCate((String)request.getAttribute("cate"));
 	re.setCate("first");
 	re.setId(id);
+	
 	re.setTitle(mm.getParameter("title"));
 	re.setContent(mm.getParameter("content"));
 	 re.setOrifile(mm.getOriginalFileName("pic"));

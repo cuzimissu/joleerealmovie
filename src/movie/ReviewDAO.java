@@ -103,41 +103,17 @@ public class ReviewDAO {
 		return res;
 	}
 
-	public int noseting() {
-		int no = 0;
-
-		try {
-			sql = "SELECT MAX(no) \"Maximum\" from MOVIEREVIEW";
-
-			stmt = con.prepareStatement(sql);
-
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				no = rs.getInt("no");
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-
-		return no;
-	}
 
 	public void insert(ReviewVO re) {
 		try {
 			sql = "select max(no)+1 from movieinfo";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
-			if (rs.next())
+			if(rs.next())
 				re.setNo(rs.getInt(1));
-
 			sql = "insert into moviereview (cate, no, title, id, regdate, "
-					+ "content, orifile, sysfile, movietitle, genre, star) values (" + "?,?,?,?,sysdate,?,?,?,?,?,?)";
-
+					+ "content, orifile, sysfile, movietitle, genre, star) values (" 
+					+ "?,?,?,?,sysdate,?,?,?,?,?,?)";
 			System.out.println(sql);
 
 			stmt = con.prepareStatement(sql);
