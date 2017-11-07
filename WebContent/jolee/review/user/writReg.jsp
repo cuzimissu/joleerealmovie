@@ -26,17 +26,12 @@
 
 	String genre = "코미디,액션";
 
-
-	//re.setCate((String)request.getAttribute("cate"));
 	re.setCate("user");
-	re.setNo(new ReviewDAO().noseting());
 	re.setId(id);
 	re.setTitle(mm.getParameter("title"));
 	re.setContent(mm.getParameter("content"));
 	 re.setOrifile(mm.getOriginalFileName("pic"));
 	re.setSysfile(mm.getFilesystemName("pic")); 
-	/*re.setOrifile(request.getParameter("pic"));
-	re.setSysfile(request.getParameter("pic"));*/
 	re.setMovietitle(mm.getParameter("movie"));
 	re.setGenre(genre);
 	re.setStar(Integer.parseInt(mm.getParameter("star")));

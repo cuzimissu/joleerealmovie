@@ -29,7 +29,6 @@
 
 	//re.setCate((String)request.getAttribute("cate"));
 	re.setCate("first");
-	re.setNo(new ReviewDAO().noseting());
 	re.setId(id);
 	re.setTitle(mm.getParameter("title"));
 	re.setContent(mm.getParameter("content"));
@@ -37,7 +36,7 @@
 	re.setSysfile(mm.getFilesystemName("pic")); 
 	/*re.setOrifile(request.getParameter("pic"));
 	re.setSysfile(request.getParameter("pic"));*/
-	re.setMovietitle(mm.getParameter("movietitle"));
+	re.setMovietitle(mm.getParameter("movie"));
 	re.setGenre(genre);
 	re.setStar(Integer.parseInt(mm.getParameter("star")));
 
