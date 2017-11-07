@@ -10,12 +10,9 @@
     			<td><input type="text" name="title"/></td>
     		</tr>
     		<tr>
-    			<td>영화선택</td>
+    			<td>영화제목</td>
     			<td>
-    				<select name="movie">
-    					<option value="thor">토르</option>
-    					<option value="ppororo">뽀로로</option>
-    				</select>
+    				<input type="text"  name="movie"/>
     			</td>
     		</tr>
     		<tr>

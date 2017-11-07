@@ -31,7 +31,11 @@
 	re.setSysfile(mm.getFilesystemName("pic"));
 	re.setMovietitle(mm.getParameter("movie"));
 	re.setGenre(genre);
+<<<<<<< HEAD
 	re.setStar(Double.parseDouble(mm.getParameter("star")));
+=======
+	re.setStar(Integer.parseInt(mm.getParameter("star")));
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 
 	ReviewDAO dao = new ReviewDAO();
 	dao.insert(re);

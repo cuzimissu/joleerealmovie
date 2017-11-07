@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import file_p.PicFile;
 
-public class ReviewDAO {
+public class ComentDAO {
 
 	String url = "localhost:1521:xe";
 	String id = "java";
@@ -20,7 +20,7 @@ public class ReviewDAO {
 	ResultSet rs = null;
 	String sql = null;
 
-	public ReviewDAO() {
+	public ComentDAO() {
 		// TODO Auto-generated constructor stub
 
 		try {
@@ -49,7 +49,7 @@ public class ReviewDAO {
 				vo.setNo(rs.getInt("no"));
 				vo.setTitle(rs.getString("title"));
 				vo.setId(rs.getString("id"));
-				vo.setStar(rs.getDouble("star"));
+				vo.setStar(rs.getInt("star"));
 				vo.setMovietitle(rs.getString("movietitle"));
 				vo.setRegDate(rs.getTimestamp("regdate"));
 				res.add(vo);
@@ -89,13 +89,8 @@ public class ReviewDAO {
 				res.setSysfile(rs.getString("sysfile"));
 				res.setMovietitle(rs.getString("movietitle"));
 				res.setGenre(rs.getString("genre"));
-<<<<<<< HEAD
-				res.setStar(rs.getDouble("star"));
-				
-=======
 				res.setStar(rs.getInt("star"));
 
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 			}
 
 		} catch (SQLException e) {
@@ -132,13 +127,8 @@ public class ReviewDAO {
 			stmt.setString(7, re.getSysfile());
 			stmt.setString(8, re.getMovietitle());
 			stmt.setString(9, re.getGenre());
-<<<<<<< HEAD
-			stmt.setDouble(10,re.getStar());
-			
-=======
 			stmt.setInt(10, re.getStar());
 
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 			System.out.println(stmt.executeUpdate());
 
 		} catch (Exception e) {
