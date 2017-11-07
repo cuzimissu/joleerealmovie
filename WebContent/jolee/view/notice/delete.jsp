@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-gggg
+<script type="text/javascript">
+	alert('삭제완료');
+	location.href = 'index.jsp';
+</script>
 </body>
 </html>

@@ -1,12 +1,33 @@
+<%@page import="req1.NoticeVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-gggg
-</body>
-</html>
+
+<%=request.getAttribute("serviceUrl") %>view 페이지
+
+<table border="">
+	<tr>
+		<td>no</td>
+		<td>제목</td>
+		<td>작성일</td>
+	</tr>
+
+<% for(NoticeVO vo : 
+	(ArrayList<NoticeVO>)request.getAttribute("data")) {
+	
+%>
+<tr>
+		<td><%=vo.getNo() %></td>
+		
+		<td><a href="writeDetail.jsp?no=<%=vo.getNo() %>"><%=vo.getTitle() %></a></td>
+		<td><%=vo.strRegDate() %> </td>
+	</tr>
+
+<%} %>
+	<tr>
+		<td colspan="3" align="right">
+			<a href="write.jsp">글쓰기</a>
+			<td><a href="delete.jsp?no=<%=vo.getNo() %>">삭제</a></td>
+		</td>
+	</tr>
+</table>

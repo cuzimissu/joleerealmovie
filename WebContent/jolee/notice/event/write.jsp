@@ -7,6 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-gggg
+	<form action="">
+		<table>
+			<tr>
+				<td>제목</td>
+				<td><input type="text" name="title" /></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><input type="text" name="content" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input submit="등록 ">
+					
+				</td>
+			</tr>
+		</table>
+	</form>
+	
 </body>
 </html>

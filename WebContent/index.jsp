@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-gggg
+<a href="cateCompany/center/first/index.jsp">cateCompany</a>
+<a href="jolee/notice/first/index.jsp" >jolee</a>
 </body>
+
 </html>

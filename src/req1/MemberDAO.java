@@ -1,4 +1,4 @@
-package file_p;
+package req1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+
 
 public class MemberDAO {
 
@@ -20,17 +26,18 @@ public class MemberDAO {
 	String sql = null;
 	
 	public MemberDAO() {
-		// TODO Auto-generated constructor stub
 		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			/*Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(
-					"jdbc:oracle:thin:@"+url, id, pw );
-			
+					"jdbc:oracle:thin:@"+url, id, pw );*/
+			Context init = new InitialContext();
+			DataSource ds = 
+					(DataSource)init.lookup("java:comp/env/jdbc/OracleDB");
+			con = ds.getConnection();
 			
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -41,7 +48,7 @@ public class MemberDAO {
 		ArrayList<MemberVO> res =new ArrayList<>();
 
 		try {
-			sql = "select * from memeber";
+			sql = "select * from moviemember";
 			
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
@@ -59,7 +66,6 @@ public class MemberDAO {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();
@@ -74,7 +80,7 @@ public class MemberDAO {
 		MemberVO res =null;
 
 		try {
-			sql = "select * from memeber where id = ?";
+			sql = "select * from moviemember where id = ?";
 			
 			stmt = con.prepareStatement(sql);
 			
@@ -85,19 +91,18 @@ public class MemberDAO {
 			if(rs.next())
 			{
 				res = new MemberVO();
-				id, pw, gender, email, nick, phone,genre,
-				content, name, sysPic, oriPic, path;
+				
 				res.setId(rs.getString("id"));
 				res.setName(rs.getString("name"));
-				res.setEmail(rs.getString("email"));
 				res.setGender(rs.getString("gender"));
-				res.setPhone(rs.getDate("phone"));
-				res.setGrade(rs.getInt("grade"));
-				res.setGenre(rs.getInt("genre"));
-				res.setSysPic(rs.getString("sysPic"));
-				res.setOriPic(rs.getString("oriPic"));
-				
-				
+				res.setNick(rs.getString("nick"));
+				res.setPhone(rs.getString("phone"));
+				res.setEmail(rs.getString("email"));
+				res.setOrifile(rs.getString("orifile"));
+				res.setSysfile(rs.getString("sysfile"));
+				res.setGenre(rs.getString("genre"));
+				res.setGrade(rs.getString("grade"));
+		
 			}
 			
 			
@@ -111,13 +116,16 @@ public class MemberDAO {
 		
 		return res;
 	}
-	
+	/*public MemberVO join(MemberVO vo)
+	{
+		Mem
+	}*/
 	public MemberVO login(MemberVO vo)
 	{
 		MemberVO res =null;
 
 		try {
-			sql = "select * from memeber where id = ? and pw = ?";
+			sql = "select * from moviemember where id = ? and pw = ?";
 			
 			stmt = con.prepareStatement(sql);
 			
@@ -131,7 +139,7 @@ public class MemberDAO {
 				res = new MemberVO();
 				
 				res.setId(rs.getString("id"));
-				res.setName(rs.getString("name"));			
+				res.setName(rs.getString("name"));
 				
 			}
 			
@@ -152,24 +160,24 @@ public class MemberDAO {
 	{
 		try {
 			
-			sql = "insert into memeber (id, pw, gender, hobby, email, "
-					+ "content, birth, regdate, grade, syspic, oripic) values ("
-					+ "?,?,?,?,?,?,?,sysdate,?,?,?)";
+			sql = "insert into moviemember (id, pw, name, gender, nick, phone, email, "
+					+ "orifile, content, sysfile, genre, grade) values ("
+					+ "?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 			System.out.println(sql);
 			
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, mem.getId());
 			stmt.setString(2, mem.getPw());
-			stmt.setString(3, mem.getGender());
-		
-			stmt.setString(5, mem.getEmail());
-			stmt.setString(6, mem.getContent());
-			stmt.setString(7, mem.strBirth());
+			stmt.setString(3, mem.getName());
+			stmt.setString(4, mem.getGender());
+			stmt.setString(5, mem.getNick());
+			stmt.setString(6, mem.getPhone());
+			stmt.setString(7, mem.getEmail());
+			stmt.setString(8, mem.getOrifile());
+			stmt.setString(9, mem.getSysfile());
 			//stmt.setString(8, mem.strRegDate());
-			stmt.setInt(8, mem.getGrade());
-			stmt.setString(9, mem.getSysPic());
-			stmt.setString(10, mem.getOriPic());
+			stmt.setString(10, mem.getGrade());
 			
 			System.out.println(stmt.executeUpdate());
 			
@@ -187,26 +195,14 @@ public class MemberDAO {
 		boolean res = false;
 		try {
 			
-			sql = "select * from memeber where id=?"; 
-			stmt = con.prepareStatement(sql);
-			stmt.setString(1, mem.getId());
-			rs = stmt.executeQuery();
-			if(rs.next())
-				mem.setSysPic(rs.getString("syspic"));
-			
-			
-			
-			
-			sql = "delete from memeber where id=? and pw = ?";
-			stmt = con.prepareStatement(sql);
-			stmt.setString(1, mem.getId());
-			stmt.setString(2, mem.getPw());
+			sql = "delete from moviemember where id='" 
+			+ mem.getId()
+			+"' and pw = '"+ mem.getPw()+"'";
 		
-			if(stmt.executeUpdate()>0)
-			{	
+			System.out.println(sql);
+			if(stmt.executeUpdate(sql)>0)
 				res = true;
-				new PicFile().fileDelete(mem);
-			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -222,24 +218,26 @@ public class MemberDAO {
 		boolean res = false;
 		try {
 			
-			sql = "update memeber set  gender = ?,"
-				+" hobby = ?, email = ?, content = ?"
+			sql = "update moviemember set  gender = ?,"
+				+" nick = ?, email = ?, orifile = ?, sysfile = ?, genre = ?"
 				+ " where id=? and pw = ?";
 		
 			stmt = con.prepareStatement(sql);
-			stmt.setString(1,mem.getGender() );
-			stmt.setString(2,mem.getHobby() );
-			stmt.setString(3, mem.getEmail());
-			stmt.setString(4, mem.getContent());
-			stmt.setString(5, mem.getId());
-			stmt.setString(6, mem.getPw());
+			
+			stmt.setString(1, mem.getPw());
+			stmt.setString(2,mem.getGender());
+			stmt.setString(3,mem.getNick());
+			stmt.setString(4, mem.getEmail());
+			stmt.setString(5, mem.getOrifile());
+			stmt.setString(6, mem.getSysfile());
+			stmt.setString(7, mem.getGenre());
+			
 			
 			System.out.println(sql);
 			if(stmt.executeUpdate()>0)
 				res = true;
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();

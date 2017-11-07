@@ -5,9 +5,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
-
 	movieVO vo = (movieVO )request.getAttribute("data");
-System.out.println(vo);
+	System.out.println(vo);
 %>    
 
 <table border="">
