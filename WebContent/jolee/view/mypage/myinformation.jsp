@@ -7,24 +7,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="1n1ask.jsp" method="post" enctype="multipart/form-data">
+<form action="uploadmoviereg.jsp" method="post" enctype="multipart/form-data">
 <table border="1">
 		<tr>
 			<td>제목</td>
 			<td><input type="text" name="title" /></td>
 		</tr>
 		<tr>
-			<td>글쓰기</td>
+			<td>개봉일</td>
+			<td><input type="text" name="reldate" /></td>
+		</tr>
+		<tr>
+			<td>종료일</td>
+			<td><input type="text" name="closedate" /></td>
+		</tr>
+		<tr>
+			<td>내용</td>
 			<td><input type="text" name="content" /></td>
 		</tr>
 		<tr>
-			<td>참조파일</td>
-			<td><input type="text" name="file" /></td>
+			<td>장르</td>
+			<td><input type="checkbox" name="genre" value="action"/>액션
+			<input type="checkbox" name="genre" value="horror"/> 공포
+			<input type="checkbox" name="genre" value="romance" />로맨스</td>
 		</tr>
-
-					<tr>
+		<tr>
+			<td>파일</td>
+			<td><input type="file" name="file" /></td>
+		</tr>
+			<tr>
 			<td colspan="2" align="center">
-			<input type="submit" value="문의하기" class="sch" />
+			<input type="submit" value="글쓰기" class="sch" />
 			<input type="reset" value="초기화" class="sch"/>
 			<a href=index.jsp">목록으로</a>
 			</td>

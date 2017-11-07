@@ -10,6 +10,7 @@
 
 
 <div class="gnb">
+<jsp:include page="<%=loginPage%>"/>
 
 	<%
 		for (String key : top.keySet()) {
