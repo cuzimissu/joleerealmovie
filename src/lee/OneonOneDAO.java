@@ -103,25 +103,23 @@ public class OneonOneDAO {
 		return res;
 	}
 	
-	public movieVO detail(int no){
-		movieVO res =null;
+	public OneonOneVO detail(int no){
+		OneonOneVO res =null;
 		try {
-			sql = "select * from movieinfo where no = ?";
+			sql = "select * from OneonOne where no = ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1,no);
 			
 			rs = stmt.executeQuery();
 			if(rs.next()){
-				res = new movieVO();
+				res = new OneonOneVO();
 				
 				res.setNo(rs.getInt("no"));
 				res.setTitle(rs.getString("title"));
 				res.setContent(rs.getString("content"));
 				res.setRegdate(rs.getTimestamp("regDate"));
-				res.setReldate(rs.getString("reldate"));
-				res.setClosedate(rs.getString("closedate"));
-				res.setSysfile(rs.getString("sysfile"));
-				res.setOrifile(rs.getString("orifile"));
+				res.setAnswer(rs.getInt("answer"));
+				res.setId(rs.getString("id"));
 			}	
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
