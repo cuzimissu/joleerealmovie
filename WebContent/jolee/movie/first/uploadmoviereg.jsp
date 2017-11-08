@@ -6,8 +6,8 @@
 
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../../inc/menuData.jsp"%>
 
 <%
@@ -16,7 +16,7 @@
 	MultipartRequest mm = new MultipartRequest(request, upfile, 10 * 1024 * 1024, "euc-kr",
 			new DefaultFileRenamePolicy());
 	request.setCharacterEncoding("euc-kr");
-	
+
 	String[] arraygenre = mm.getParameterValues("genre");
 
 	String genre = "";

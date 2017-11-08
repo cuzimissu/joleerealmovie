@@ -11,7 +11,9 @@
 <%
 String upfile = request.getRealPath("file");
 
-upfile = "F:\\webwork\\joleerealmovie\\WebContent\\jolee\\file";
+
+	upfile = "C:/file";
+
 	MultipartRequest mm = new MultipartRequest(request,
 			upfile, 10 * 1024 * 1024,
 			"euc-kr",
@@ -39,7 +41,7 @@ upfile = "F:\\webwork\\joleerealmovie\\WebContent\\jolee\\file";
 	re.setSysfile(request.getParameter("pic"));*/
 	re.setMovietitle(mm.getParameter("movie"));
 	re.setGenre(genre);
-	re.setStar(Integer.parseInt(mm.getParameter("star")));
+	re.setStar(Double.parseDouble(mm.getParameter("star")));
 
 	ReviewDAO dao = new ReviewDAO();
 	dao.insert(re);

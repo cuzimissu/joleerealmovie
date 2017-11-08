@@ -49,7 +49,7 @@ public class ComentDAO {
 				vo.setNo(rs.getInt("no"));
 				vo.setTitle(rs.getString("title"));
 				vo.setId(rs.getString("id"));
-				vo.setStar(rs.getInt("star"));
+				vo.setStar(rs.getDouble("star"));
 				vo.setMovietitle(rs.getString("movietitle"));
 				vo.setRegDate(rs.getTimestamp("regdate"));
 				res.add(vo);
@@ -89,7 +89,7 @@ public class ComentDAO {
 				res.setSysfile(rs.getString("sysfile"));
 				res.setMovietitle(rs.getString("movietitle"));
 				res.setGenre(rs.getString("genre"));
-				res.setStar(rs.getInt("star"));
+				res.setStar(rs.getDouble("star"));
 
 			}
 
@@ -127,7 +127,7 @@ public class ComentDAO {
 			stmt.setString(7, re.getSysfile());
 			stmt.setString(8, re.getMovietitle());
 			stmt.setString(9, re.getGenre());
-			stmt.setInt(10, re.getStar());
+			stmt.setDouble(10, re.getStar());
 
 			System.out.println(stmt.executeUpdate());
 

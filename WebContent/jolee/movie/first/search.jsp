@@ -19,7 +19,6 @@ for(int i = 0; i < arr.length; i++){
 		request.setAttribute("data", new movieDAO().search3(arr[0].toLowerCase(),arr[1].toLowerCase(),arr[2].toLowerCase()));
 	}
 }
-request.setAttribute("data", new movieDAO().search(request.getParameter("genre").toLowerCase()));
 %>
 
 <jsp:forward page="../../view/template.jsp"></jsp:forward>

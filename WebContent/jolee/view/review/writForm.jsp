@@ -21,9 +21,9 @@
     				<select name="star">
     					<option value="1">¡Ú</option>
     					<option value="2">¡Ú¡Ú</option>
-    					<option value="2">¡Ú¡Ú¡Ú</option>
-    					<option value="2">¡Ú¡Ú¡Ú¡Ú</option>
-    					<option value="2">¡Ú¡Ú¡Ú¡Ú¡Ú</option>
+    					<option value="3">¡Ú¡Ú¡Ú</option>
+    					<option value="4">¡Ú¡Ú¡Ú¡Ú</option>
+    					<option value="5">¡Ú¡Ú¡Ú¡Ú¡Ú</option>
     				</select>
     			</td>
     		</tr>

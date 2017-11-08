@@ -1,4 +1,5 @@
 
+<%@page import="movie.ReviewVO"%>
 <%@page import="lee.movieVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -29,34 +30,32 @@ request.setCharacterEncoding("euc-kr");
 
 <table border="">
 	<tr>
-		<td>번호</td>
-		<td>제목</td>
-		<td>장르</td>
-		<td>개봉일</td>
-		<td>종료일</td>
-		<td>작성일</td>
-		<td>삭제</td>
+	<td>제목</td>
+	<td>장르</td>
+	<td>별점</td>
+	
+
 	</tr>
 
-<% for(movieVO vo : 
-	(ArrayList<movieVO>)request.getAttribute("data")) {
+<% for(ReviewVO vo : 
+	(ArrayList<ReviewVO>)request.getAttribute("data")) {
 	
 %>
 <tr>
-		<td><%=vo.getNo() %></td>
-		<td><a href="detail.jsp?no=<%=vo.getNo() %>"><%=vo.getTitle() %></a></td>
-		<td><%=vo.getGenre() %> </td>
-		<td><%=vo.getReldate() %> </td>
-		<td><%=vo.getClosedate() %> </td>
-		<td><%=vo.getRegdate() %> </td>
-		<td><a href="delete.jsp?no=<%=vo.getNo() %>">삭제</a></td>
+		
+		<td><a href="detail.jsp?title=<%=vo.getMovietitle() %>"><%=vo.getMovietitle() %></a></td>
+		<td><%=vo.getGenre() %>
+		<td><%=vo.getStar() %> </td>
+		
 		
 	</tr>
 
-<%}	String a = "관리자";
+<%} %>
+<%
+	String a = "관리자";
 if(a.equals("관리자")){%>
 	<tr >
-		<td colspan="7" align="center" >
+		<td colspan="3" align="center" >
 			<a href="uploadmovieform.jsp">글쓰기</a>
 		</td>
 	</tr>
