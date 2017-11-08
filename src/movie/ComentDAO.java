@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import file_p.PicFile;
+
 
 public class ComentDAO {
 
