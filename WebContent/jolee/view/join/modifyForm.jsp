@@ -1,7 +1,7 @@
 <%@page import="java.util.LinkedHashMap"%>
 <%@page import="java.util.HashMap"%>
-<%@page import="req.MemberVO"%>
-<%@page import="req.MemberDAO"%>
+<%@page import="req1.MemberVO"%>
+<%@page import="req1.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
@@ -64,26 +64,28 @@
 			</td>
 		</tr>
 		<tr>
-			<td>취미</td>
-			<td>
+			<td>닉네임</td>
+			<td><input type="text" name="Nick" /></td>
+		</tr>
+		<tr>
+			<td>핸드폰</td>
+			<td><input type="text" name="phone" /></td>
+		</tr>
+		<tr>
+			<td>이메일</td>
+				<td>
+					<input type="text" name="email1">@
+					<select name="email2">
+						<option value="naver.com">네이버</option>
+						<option value="gmail.com">구글</option>
+						<option value="daum.net" selected="selected">다음</option>
+						<option value="yahoo.co.kr">야후</option>
+						<option value="jum.com">줌</option>
+					</select>
+				</td>
+		</tr>	
+		<tr>
 			
-			<%
-				LinkedHashMap <String , String >hobby= new LinkedHashMap();
-				hobby.put("read", "독서");
-				hobby.put("game", "game");
-				hobby.put("fish", "낚시");
-			for(String key : hobby.keySet()){
-				String chk ="";
-			for(String ho : vo.getHobby().split(",")) {
-				
-				
-				if(ho.equals(key))
-					chk="checked=\"checked\"";
-			}
-			%>
-				<input type="checkbox" name="hobby" <%=chk %> value="<%=key%>"/>
-				<%=hobby.get(key)%>
-			<%} %>
 			</td>
 		</tr>
 		<tr>
@@ -91,7 +93,21 @@
 			<td><input type="file" name="ff" /></td>
 		</tr>
 		<tr>
-			<td>email</td>
+			<td>관심장르</td>
+			<td>
+				<select name="genre">
+					<option value="action" selected="selected">장르선택</option>
+					<option value="action">action</option>
+					<option value="fantasy">fantasy</option>
+					<option value="melo" >melo</option>
+					<option value="mystery">mystery</option>
+					<option value="noir">noir</option>
+					<option value="horror">horror</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>이메일</td>
 			<td>
 			<%
 				String [] email = vo.getEmail().split("@");
@@ -115,14 +131,8 @@
 				<option  <%=chk %> value="<%=key%>"/>
 				<%=domain.get(key)%></option>
 			<%} %>
-
 				</select>
 			</td>
-		</tr>
-		<tr>
-			<td>남기실 말</td>
-			<td><textarea rows="5" cols="30" 
-			name="content"><%=vo.getContent() %></textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">

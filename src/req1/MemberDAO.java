@@ -7,12 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
-
-
-
 public class MemberDAO {
 
 	
@@ -28,13 +22,10 @@ public class MemberDAO {
 	public MemberDAO() {
 		
 		try {
-			/*Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(
-					"jdbc:oracle:thin:@"+url, id, pw );*/
-			Context init = new InitialContext();
-			DataSource ds = 
-					(DataSource)init.lookup("java:comp/env/jdbc/OracleDB");
-			con = ds.getConnection();
+					"jdbc:oracle:thin:@"+url, id, pw );
+			
 			
 			
 		} catch (Exception e) {
@@ -94,21 +85,20 @@ public class MemberDAO {
 				
 				res.setId(rs.getString("id"));
 				res.setName(rs.getString("name"));
-				res.setGender(rs.getString("gender"));
 				res.setNick(rs.getString("nick"));
-				res.setPhone(rs.getString("phone"));
 				res.setEmail(rs.getString("email"));
-				res.setOrifile(rs.getString("orifile"));
-				res.setSysfile(rs.getString("sysfile"));
-				res.setGenre(rs.getString("genre"));
+				res.setGender(rs.getString("gender"));
+				res.setPhone(rs.getString("phone"));
 				res.setGrade(rs.getString("grade"));
-		
+				res.setGenre(rs.getString("genre"));
+				res.setSysfile(rs.getString("sysfile"));
+				res.setOrifile(rs.getString("orifile"));
+
 			}
 			
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();
@@ -116,10 +106,7 @@ public class MemberDAO {
 		
 		return res;
 	}
-	/*public MemberVO join(MemberVO vo)
-	{
-		Mem
-	}*/
+	
 	public MemberVO login(MemberVO vo)
 	{
 		MemberVO res =null;
@@ -139,14 +126,13 @@ public class MemberDAO {
 				res = new MemberVO();
 				
 				res.setId(rs.getString("id"));
-				res.setName(rs.getString("name"));
+				res.setName(rs.getString("name"));			
 				
 			}
 			
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();
@@ -160,24 +146,24 @@ public class MemberDAO {
 	{
 		try {
 			
-			sql = "insert into moviemember (id, pw, name, gender, nick, phone, email, "
-					+ "orifile, content, sysfile, genre, grade) values ("
-					+ "?,?,?,?,?,?,?,?,?,?,?,?)";
+			sql = "insert into moviemember (id, name, pw, nick, phone, gender, email, "
+					+ "grade, sysfile, orifile, genre) values ("
+					+ "?,?,?,?,?,?,?,?,?,?,?)";
 			
 			System.out.println(sql);
 			
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, mem.getId());
-			stmt.setString(2, mem.getPw());
-			stmt.setString(3, mem.getName());
-			stmt.setString(4, mem.getGender());
-			stmt.setString(5, mem.getNick());
-			stmt.setString(6, mem.getPhone());
+			stmt.setString(2, mem.getName());
+			stmt.setString(3, mem.getPw());
+			stmt.setString(4, mem.getNick());
+			stmt.setString(5, mem.getPhone());
+			stmt.setString(6, mem.getGender());
 			stmt.setString(7, mem.getEmail());
-			stmt.setString(8, mem.getOrifile());
+			stmt.setString(8, mem.getGrade());
 			stmt.setString(9, mem.getSysfile());
-			//stmt.setString(8, mem.strRegDate());
-			stmt.setString(10, mem.getGrade());
+			stmt.setString(10, mem.getOrifile());
+			stmt.setString(11, mem.getGenre());
 			
 			System.out.println(stmt.executeUpdate());
 			
@@ -195,16 +181,25 @@ public class MemberDAO {
 		boolean res = false;
 		try {
 			
-			sql = "delete from moviemember where id='" 
-			+ mem.getId()
-			+"' and pw = '"+ mem.getPw()+"'";
-		
-			System.out.println(sql);
-			if(stmt.executeUpdate(sql)>0)
-				res = true;
+			sql = "select * from moviemember where id=?"; 
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, mem.getId());
+			rs = stmt.executeQuery();
+			if(rs.next())
+				mem.setSysfile(rs.getString("sysfile"));
 			
+			sql = "delete from moviemember where id=? and pw = ?";
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, mem.getId());
+			stmt.setString(2, mem.getPw());
+		
+			if(stmt.executeUpdate()>0)
+			{	
+				res = true;
+				new MFile().fileDelete(mem);
+			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}finally {
 			close();
@@ -219,18 +214,14 @@ public class MemberDAO {
 		try {
 			
 			sql = "update moviemember set  gender = ?,"
-				+" nick = ?, email = ?, orifile = ?, sysfile = ?, genre = ?"
-				+ " where id=? and pw = ?";
+				+"Phone = ?, email = ?, pw = ?"
+				+ " where id = ? and pw = ?";
 		
 			stmt = con.prepareStatement(sql);
-			
-			stmt.setString(1, mem.getPw());
-			stmt.setString(2,mem.getGender());
-			stmt.setString(3,mem.getNick());
-			stmt.setString(4, mem.getEmail());
-			stmt.setString(5, mem.getOrifile());
-			stmt.setString(6, mem.getSysfile());
-			stmt.setString(7, mem.getGenre());
+			stmt.setString(1, mem.getGender() );
+			stmt.setString(2, mem.getPhone() );
+			stmt.setString(3, mem.getEmail());
+			stmt.setString(4, mem.getPw());
 			
 			
 			System.out.println(sql);
@@ -238,6 +229,7 @@ public class MemberDAO {
 				res = true;
 			
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close();

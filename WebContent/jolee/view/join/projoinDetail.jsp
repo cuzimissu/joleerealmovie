@@ -1,6 +1,7 @@
-<%@page import="file_p.MemberVO"%>
+<%@page import="req1.MemberVO"%>
+<%@page import="req1.MemberVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="file_p.MemberDAO"%>
+<%@page import="req1.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
@@ -33,16 +34,11 @@
 		<td>성별</td><td><%=vo.getGender() %></td>
 	</tr><tr>
 		<td>회원등급</td><td><%=vo.getGrade() %></td>
-		<% if(vo.getSysPic()!=null) {%>
 	</tr><tr>
-		<td>프로필</td><td>
-		<% if(vo.isImgChk()) {%>
-		<img src="../ff/<%=vo.getSysPic() %>">
-		<%} else{ %>
-			<a href="download.jsp?sys=<%=vo.getSysPic() %>&ori=<%=vo.getOriPic() %>"><%=vo.getOriPic() %></a>
-		<%} %>
+		<td>첨부파일</td>
+		<td><%=vo.getSysfile() %>
+		<a href="download.jsp?sys=<%=vo.getSysfile() %>&ori=<%=vo.getOrifile() %>"><%=vo.getOrifile() %></a>
 		</td>
-		<%} %>
 	</tr><tr>
 			<td>관심장르</td><td><%=vo.getGenre() %></td>
 	</tr><tr>

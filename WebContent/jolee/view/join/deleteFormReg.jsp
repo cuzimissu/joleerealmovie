@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script type="text/javascript">
-	alert('회원가입 되었습니다');
-	location.href = 'index.jsp';
-</script>
+
 </body>
 </html>
