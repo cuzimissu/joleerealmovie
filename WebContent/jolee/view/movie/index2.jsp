@@ -7,25 +7,7 @@
 <%
 request.setCharacterEncoding("euc-kr");
 %>
-<%=request.getAttribute("serviceUrl") %>view 페이지
-
-
-<script type="text/javascript">
-	function search(){
-			searchgenre.submit();
-	}
-
-</script>
-<form action="search.jsp" name="searchgenre">
-<table>
-<tr>
-<td><input type="checkbox" name="genre" value="Action">액션</td>
-<td><input type="checkbox" name="genre" value="Horror">공포</td>
-<td><input type="checkbox" name="genre" value="Romance">로맨스</td>
-<td><input type="button" onclick="search()" value="검색"></td>
-</tr> 
-</table>
-</form>
+리뷰페이지에서 얻은 평점순으로 영화 정보를 알려드립니다!
 
 
 <table border="">
@@ -51,13 +33,13 @@ request.setCharacterEncoding("euc-kr");
 	</tr>
 
 <%} %>
-<%
-	String a = "관리자";
-if(a.equals("관리자")){%>
+
+<%	String a = (String)request.getAttribute("cate");
+if(a.equals("first")){ %>
 	<tr >
 		<td colspan="3" align="center" >
 			<a href="uploadmovieform.jsp">글쓰기</a>
 		</td>
 	</tr>
-	<%} %>
+<%} %>
 </table>

@@ -5,7 +5,7 @@
 <%
 	LinkedHashMap<String, String> top = (LinkedHashMap<String, String>) request.getAttribute("top");
 	LinkedHashMap<String, String> menuList = (LinkedHashMap<String, String>) request.getAttribute("menuList");
-	/* String loginPage = (String) request.getAttribute("loginPage"); */
+ String loginPage = (String) request.getAttribute("loginPage");
 %>
 
 
@@ -14,7 +14,7 @@
 <%-- ${ loginPage}
 <jsp:include page="${ loginPage}"/>  --%>
 
-<%-- <jsp:include page="<%=loginPage%>"/> --%>
+<jsp:include page="<%=loginPage%>"/> 
 
 
 	<%

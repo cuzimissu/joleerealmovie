@@ -5,9 +5,16 @@
     pageEncoding="EUC-KR"%>
 <%
 request.setCharacterEncoding("euc-kr");
+String a = (String)request.getAttribute("cate");
+	
+	String b="현재 상영중인 영화를 알려드립니다!";
+	
 %>
-<%=request.getAttribute("serviceUrl") %>view 페이지
+<%if(a.equals("first")){
+	 b="전체 영화의 정보를 알려드립니다.";
+}%>
 
+<%=b %>
 
 <script type="text/javascript">
 	function search(){
@@ -35,7 +42,9 @@ request.setCharacterEncoding("euc-kr");
 		<td>개봉일</td>
 		<td>종료일</td>
 		<td>작성일</td>
+		<%if(a.equals("first")){ %>
 		<td>삭제</td>
+		<%} %>
 	</tr>
 
 <% for(movieVO vo : 
@@ -49,12 +58,13 @@ request.setCharacterEncoding("euc-kr");
 		<td><%=vo.getReldate() %> </td>
 		<td><%=vo.getClosedate() %> </td>
 		<td><%=vo.getRegdate() %> </td>
+		<%if(a.equals("first")){ %>
 		<td><a href="delete.jsp?no=<%=vo.getNo() %>">삭제</a></td>
-		
+		<%} %>
 	</tr>
 
-<%}	String a = "관리자";
-if(a.equals("관리자")){%>
+<%}
+if(a.equals("first")){%>
 	<tr >
 		<td colspan="7" align="center" >
 			<a href="uploadmovieform.jsp">글쓰기</a>

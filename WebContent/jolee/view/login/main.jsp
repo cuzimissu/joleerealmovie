@@ -1,4 +1,4 @@
-<%@page import="req.MemberVO"%>
+<%@page import="req1.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%

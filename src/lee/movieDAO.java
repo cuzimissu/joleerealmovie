@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import movie.ReviewVO;
+import req.MemberVO;
 
 public class movieDAO {	
 	String url ="localhost:1521:xe";
@@ -304,6 +305,39 @@ public class movieDAO {
 			close();
 		}return res;
 	}
+	
+	public boolean modify(movieVO mem )
+	{
+		boolean res = false;
+		try {
+			
+			sql = "update movieinfo set title=?, reldate=?, closedate=?, content=?, genre=?, orifile=?, sysfile=?"
+				+ " where no=?";
+		
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1,mem.getTitle());
+			stmt.setString(2,mem.getReldate());
+			stmt.setString(3, mem.getClosedate());
+			stmt.setString(4, mem.getContent());
+			stmt.setString(5, mem.getGenre());
+			stmt.setString(6, mem.getOrifile());
+			stmt.setString(7, mem.getSysfile());
+			stmt.setInt(8, mem.getNo());
+			
+			System.out.println(sql);
+			if(stmt.executeUpdate()>0)
+				res = true;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
+	
+
 	
 	
 	

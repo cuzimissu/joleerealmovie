@@ -6,11 +6,7 @@
     pageEncoding="EUC-KR"%>
 <%
 	movieVO vo = (movieVO )request.getAttribute("data");
-<<<<<<< HEAD
-	System.out.println(vo);
-=======
 
->>>>>>> refs/remotes/origin/master
 %>    
 
 <table border="">
@@ -53,6 +49,7 @@ if(request.getAttribute("cate").equals("cc")){
 %>
 	<tr>	
 		<td colspan="2" align="right">
+
 			<a href="index.jsp">¸ñ·Ï</a>
 		</td>
 	</tr>

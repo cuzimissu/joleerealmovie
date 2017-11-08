@@ -1,6 +1,6 @@
 
-<%@page import="req.MemberDAO"%>
-<%@page import="req.MemberVO"%>
+<%@page import="req1.MemberDAO"%>
+<%@page import="req1.MemberVO"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -18,7 +18,7 @@
 
 	if (res != null) {
 		//url = "../../../cateCompany/center/first/index.jsp?memmm=" + res.getName();
-		url = "../../../cateCompany/center/first/index.jsp?";
+		url = "../../../jolee/center/first/index.jsp?";
 		msg = res.getName() + "´Ô ·Î±×ÀÎ ÇÏ¼Ì½À´Ï´Ù.";
 
 		session.setAttribute("mem", res.getName());
