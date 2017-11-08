@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import file_p1.PicFile;
+import req.MemberVO;
 
 public class ReviewDAO {
 
@@ -141,7 +142,27 @@ public class ReviewDAO {
 			close();
 		}
 	}
+	public boolean delete(int no )
+	{
+		boolean res = false;
+		try {
+			
+			sql = "delete from moviereview where no= ?" ;
 
+			stmt = con.prepareStatement(sql);
+			// stmt.setString(1, res.getCate());
+			stmt.setInt(1, no);
+			rs = stmt.executeQuery();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
+	
 	public void close() {
 		try {
 			if (rs != null)

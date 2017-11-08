@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import file_p.PicFile;
 
-public class ComentDAO {
+public class ScrapDAO {
 
 	String url = "localhost:1521:xe";
 	String id = "java";
@@ -20,7 +20,7 @@ public class ComentDAO {
 	ResultSet rs = null;
 	String sql = null;
 
-	public ComentDAO() {
+	public ScrapDAO() {
 		// TODO Auto-generated constructor stub
 
 		try {
@@ -33,24 +33,21 @@ public class ComentDAO {
 
 	}
 
-	public ArrayList<ComentVO> list(String cate,int no) {
-		ArrayList<ComentVO> res = new ArrayList<>();
+	public ArrayList<ScrapVO> list(String id) {
+		ArrayList<ScrapVO> res = new ArrayList<>();
 
 		try {
-			sql = "select * from moviecoment where cate = ? and no = ? order by regdate desc";
+			sql = "select * from MOVIESCRAP where id = ? order by regdate desc";
 
 			stmt = con.prepareStatement(sql);
-			stmt.setString(1, cate);
-			stmt.setInt(2, no);
+			stmt.setString(1, id);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				ComentVO vo = new ComentVO();
+				ScrapVO vo = new ScrapVO();
 				vo.setCate(rs.getString("cate"));
 				vo.setNo(rs.getInt("no"));
-				vo.setCno(rs.getInt("cno"));
 				vo.setId(rs.getString("id"));
-				vo.setContent(rs.getString("content"));
 				vo.setRegDate(rs.getTimestamp("regdate"));
 				res.add(vo);
 			}
@@ -68,24 +65,17 @@ public class ComentDAO {
 	
 
 
-	public void insert(ComentVO re) {
+	public void insert(ScrapVO re) {
 		try {
-			sql = "select max(cno)+1 from moviecoment";
-			stmt = con.prepareStatement(sql);
-			rs = stmt.executeQuery();
-			if(rs.next())
-				re.setCno(rs.getInt(1));
-			sql = "insert into moviecoment (cate, no,cno, id,content, regdate) values (" 
-					+ "?,?,?,?,?,sysdate)";
+			sql = "insert into MOVIESCRAP (cate, no, id, regdate) values (" 
+					+ "?,?,?,sysdate)";
 			System.out.println(sql);
 
 			stmt = con.prepareStatement(sql);
 
 			stmt.setString(1, re.getCate());
 			stmt.setInt(2, re.getNo());
-			stmt.setInt(3, re.getCno());
-			stmt.setString(4, re.getId());
-			stmt.setString(5, re.getContent());
+			stmt.setString(3, re.getId());
 
 			System.out.println(stmt.executeUpdate());
 
@@ -97,36 +87,17 @@ public class ComentDAO {
 		}
 	}
 	
-	public boolean delete(int no )
+	public boolean delete(String cate,int no)
 	{
 		boolean res = false;
 		try {
 			
-			sql = "delete from moviecoment where no= ?" ;
+			sql = "delete from MOVIESCRAP where cate= ? and no= ?" ;
 
 			stmt = con.prepareStatement(sql);
 			// stmt.setString(1, res.getCate());
-			stmt.setInt(1, no);
-			rs = stmt.executeQuery();
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close();
-		}
-		return res;
-	}
-	public boolean delete2(int no )
-	{
-		boolean res = false;
-		try {
-			
-			sql = "delete from moviecoment where cno= ?" ;
-
-			stmt = con.prepareStatement(sql);
-			// stmt.setString(1, res.getCate());
-			stmt.setInt(1, no);
+			stmt.setString(1, cate);
+			stmt.setInt(2, no);
 			rs = stmt.executeQuery();
 
 		} catch (Exception e) {

@@ -6,11 +6,9 @@
     pageEncoding="EUC-KR"%>
 <%
 	movieVO vo = (movieVO )request.getAttribute("data");
-<<<<<<< HEAD
-	System.out.println(vo);
-=======
 
->>>>>>> refs/remotes/origin/master
+	System.out.println(vo);
+
 %>    
 
 <table border="">

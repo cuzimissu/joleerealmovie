@@ -8,5 +8,9 @@ center/notice/list
 <%
 	int a = Integer.parseInt(request.getParameter("no"));
 	request.setAttribute("data",  new ReviewDAO().detail(a));
+	
+	
+	session.setAttribute("no", request.getParameter("no"));
+	session.setAttribute("cate", "user");
 %>
 <jsp:forward page="../../view/template.jsp"></jsp:forward>
