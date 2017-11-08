@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ include file="../../inc/menuData.jsp" %>
-<%
+<%/* asdf */
 System.out.println(request.getParameter("no"));
 request.setAttribute("data", new movieDAO().delete(Integer.parseInt(request.getParameter("no"))));
 %>
