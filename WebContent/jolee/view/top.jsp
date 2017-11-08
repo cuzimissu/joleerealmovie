@@ -10,8 +10,12 @@
 
 
 <div class="gnb">
+<<<<<<< HEAD
 <%-- ${ loginPage}
 <jsp:include page="${ loginPage}"/>  --%>
+=======
+<%-- <jsp:include page="<%=loginPage%>"/> --%>
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 
 	<%
 		for (String key : top.keySet()) {
@@ -24,12 +28,19 @@
 	<div class="btm_link">
 		<%
 			for (String key2 : menuList.keySet()) {
+			if(key2.equals("cc")||key2.equals("1n1")){
+				%>
+				<p>
+					<a href="../<%=key2%>/index2.jsp"><%=menuList.get(key2)%></a>
+				</p>
+				<%
+			 }else{
 		%>
-		<p>
+				<p>
 			<a href="../<%=key2%>/index.jsp"><%=menuList.get(key2)%></a>
 		</p>
 		<%
-			}
+			 } }
 		%>
 	</div>
 </div>

@@ -7,11 +7,47 @@ import java.util.Date;
 
 public class MemberVO {
 
-	String id, pw, gender, hobby, email, 
+	String id, pw, gender, email, nick, phone,genre,
 	content, name, sysPic, oriPic, path;
 	
 	
 	
+	public String getGenre() {
+		return genre;
+	}
+
+
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+
+	public String getNick() {
+		return nick;
+	}
+
+
+
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+
+
+
 	public boolean isImgChk() {
 		
 		boolean res = false; 
@@ -173,13 +209,7 @@ public class MemberVO {
 		this.gender = gender;
 	}
 
-	public String getHobby() {
-		return hobby;
-	}
-
-	public void setHobby(String hobby) {
-		this.hobby = hobby;
-	}
+	
 
 	public String getEmail() {
 		return email;

@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>
+<body>jolee/notice/first/index.jsp
 <a href="jolee/movie/first/index.jsp">조이무비</a>
+<a href="jolee/notice/first/index.jsp">조이무비</a>
 </body>
 </html>

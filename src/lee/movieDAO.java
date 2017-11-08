@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
+import movie.ReviewVO;
 
 public class movieDAO {	
 	String url ="localhost:1521:xe";
@@ -197,12 +200,37 @@ public class movieDAO {
 			e.printStackTrace();
 		}finally {
 			close();
+		}	
+		return res;
+	}		
+			
+	public ArrayList<ReviewVO> recommendlist(){
+		ArrayList<ReviewVO> res =new ArrayList<>();
+		try {
+			sql = "select movietitle, round(avg(star),1) star, genre from moviereview group by movietitle ,genre order by star desc";
+			stmt = con.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next())
+			{
+				ReviewVO vo = new ReviewVO();
+				vo.setMovietitle(rs.getString("movietitle"));
+//				vo.setStar(rs.getInt("round(avg(star),2)"));
+				vo.setStar(rs.getDouble("star"));
+				vo.setGenre(rs.getString("genre"));
+				res.add(vo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
 		}
 		return res;
-	}
-	
+	}	
+		
+		
 	public boolean delete(int no)
-	{
+	{	
 		boolean res = false;
 		try {
 			
@@ -228,6 +256,33 @@ public class movieDAO {
 			sql = "select * from movieinfo where no = ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1,no);
+			
+			rs = stmt.executeQuery();
+			if(rs.next()){
+				res = new movieVO();
+				
+				res.setNo(rs.getInt("no"));
+				res.setTitle(rs.getString("title"));
+				res.setContent(rs.getString("content"));
+				res.setRegdate(rs.getTimestamp("regDate"));
+				res.setReldate(rs.getString("reldate"));
+				res.setClosedate(rs.getString("closedate"));
+				res.setSysfile(rs.getString("sysfile"));
+				res.setOrifile(rs.getString("orifile"));
+			}	
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}return res;
+	}
+	public movieVO detail2(String title){
+		movieVO res =null;
+		try {
+			sql = "select * from movieinfo where title = ?";
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1,title);
 			
 			rs = stmt.executeQuery();
 			if(rs.next()){

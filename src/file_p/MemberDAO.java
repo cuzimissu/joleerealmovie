@@ -41,7 +41,7 @@ public class MemberDAO {
 		ArrayList<MemberVO> res =new ArrayList<>();
 
 		try {
-			sql = "select * from member";
+			sql = "select * from memeber";
 			
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
@@ -74,7 +74,7 @@ public class MemberDAO {
 		MemberVO res =null;
 
 		try {
-			sql = "select * from member where id = ?";
+			sql = "select * from memeber where id = ?";
 			
 			stmt = con.prepareStatement(sql);
 			
@@ -85,15 +85,15 @@ public class MemberDAO {
 			if(rs.next())
 			{
 				res = new MemberVO();
-				
+				id, pw, gender, email, nick, phone,genre,
+				content, name, sysPic, oriPic, path;
 				res.setId(rs.getString("id"));
+				res.setName(rs.getString("name"));
 				res.setEmail(rs.getString("email"));
 				res.setGender(rs.getString("gender"));
-				res.setHobby(rs.getString("hobby"));
-				res.setContent(rs.getString("content"));
-				res.setRegDate(rs.getTimestamp("reg_date"));
-				res.setBirth(rs.getDate("birth"));
+				res.setPhone(rs.getDate("phone"));
 				res.setGrade(rs.getInt("grade"));
+				res.setGenre(rs.getInt("genre"));
 				res.setSysPic(rs.getString("sysPic"));
 				res.setOriPic(rs.getString("oriPic"));
 				
@@ -117,7 +117,7 @@ public class MemberDAO {
 		MemberVO res =null;
 
 		try {
-			sql = "select * from member where id = ? and pw = ?";
+			sql = "select * from memeber where id = ? and pw = ?";
 			
 			stmt = con.prepareStatement(sql);
 			
@@ -152,8 +152,8 @@ public class MemberDAO {
 	{
 		try {
 			
-			sql = "insert into member (id, pw, gender, hobby, email, "
-					+ "content, birth, reg_date, grade, syspic, oripic) values ("
+			sql = "insert into memeber (id, pw, gender, hobby, email, "
+					+ "content, birth, regdate, grade, syspic, oripic) values ("
 					+ "?,?,?,?,?,?,?,sysdate,?,?,?)";
 			
 			System.out.println(sql);
@@ -162,7 +162,7 @@ public class MemberDAO {
 			stmt.setString(1, mem.getId());
 			stmt.setString(2, mem.getPw());
 			stmt.setString(3, mem.getGender());
-			stmt.setString(4, mem.getHobby());
+		
 			stmt.setString(5, mem.getEmail());
 			stmt.setString(6, mem.getContent());
 			stmt.setString(7, mem.strBirth());
@@ -187,7 +187,7 @@ public class MemberDAO {
 		boolean res = false;
 		try {
 			
-			sql = "select * from member where id=?"; 
+			sql = "select * from memeber where id=?"; 
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, mem.getId());
 			rs = stmt.executeQuery();
@@ -197,7 +197,7 @@ public class MemberDAO {
 			
 			
 			
-			sql = "delete from member where id=? and pw = ?";
+			sql = "delete from memeber where id=? and pw = ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, mem.getId());
 			stmt.setString(2, mem.getPw());
@@ -222,7 +222,7 @@ public class MemberDAO {
 		boolean res = false;
 		try {
 			
-			sql = "update member set  gender = ?,"
+			sql = "update memeber set  gender = ?,"
 				+" hobby = ?, email = ?, content = ?"
 				+ " where id=? and pw = ?";
 		

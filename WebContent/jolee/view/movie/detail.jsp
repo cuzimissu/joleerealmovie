@@ -5,9 +5,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
-
 	movieVO vo = (movieVO )request.getAttribute("data");
-System.out.println(vo);
+<<<<<<< HEAD
+	System.out.println(vo);
+=======
+
+>>>>>>> refs/remotes/origin/master
 %>    
 
 <table border="">
@@ -20,7 +23,9 @@ System.out.println(vo);
 	<tr>
 		<td>사진</td><td><img src="../../file/<%=vo.getSysfile() %>" width="500"></td>
 	</tr>
+	<tr>
 	<td>포스터 다운로드</td><td><a href="download.jsp?Sysfile=<%=vo.getSysfile() %>&Orifile=<%=vo.getOrifile() %>" ><%=vo.getOrifile() %></a></td>
+	</tr>
 	<tr>
 		<td>개봉일</td><td><%=vo.getReldate() %></td>
 	</tr>
@@ -32,10 +37,24 @@ System.out.println(vo);
 	</tr>
 	
 
+<%
+System.out.println(request.getAttribute("cate"));
+if(request.getAttribute("cate").equals("cc")){
+	%>
+	<tr>	
+		<td colspan="2" align="right">
+			<a href="index2.jsp">목록</a>
+		</td>
+	</tr>
 
-	<tr>
+	
+	<%
+}else{
+%>
+	<tr>	
 		<td colspan="2" align="right">
 			<a href="index.jsp">목록</a>
 		</td>
 	</tr>
+<%}%>
 </table>

@@ -9,8 +9,9 @@ public class ReviewVO {
 	
 	String cate, title,id,content,orifile,sysfile,movietitle,genre, path;
 
-	Integer no,star;
+	Integer no;
 	
+	Double star;
 	
 	Date  regDate;
 	
@@ -97,11 +98,11 @@ public class ReviewVO {
 		this.no = no;
 	}
 
-	public Integer getStar() {
+	public Double getStar() {
 		return star;
 	}
 
-	public void setStar(Integer star) {
+	public void setStar(Double star) {
 		this.star = star;
 	}
 

@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import file_p.PicFile;
+import file_p1.PicFile;
 
 public class ComentDAO {
 
@@ -50,7 +50,12 @@ public class ComentDAO {
 				vo.setNo(rs.getInt("no"));
 				vo.setCno(rs.getInt("cno"));
 				vo.setId(rs.getString("id"));
+<<<<<<< HEAD
 				vo.setContent(rs.getString("content"));
+=======
+				vo.setStar(rs.getDouble("star"));
+				vo.setMovietitle(rs.getString("movietitle"));
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 				vo.setRegDate(rs.getTimestamp("regdate"));
 				res.add(vo);
 			}
@@ -70,7 +75,48 @@ public class ComentDAO {
 
 	public void insert(ComentVO re) {
 		try {
+<<<<<<< HEAD
 			sql = "select max(cno)+1 from moviecoment";
+=======
+			sql = "select * from moviereview where no = ?";
+
+			stmt = con.prepareStatement(sql);
+			// stmt.setString(1, res.getCate());
+			stmt.setInt(1, no);
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				res = new ReviewVO();
+
+				res.setRegDate(rs.getTimestamp("regdate"));
+				res.setCate(rs.getString("cate"));
+				res.setNo(rs.getInt("no"));
+				res.setTitle(rs.getString("title"));
+				res.setId(rs.getString("id"));
+				res.setContent(rs.getString("content"));
+				res.setOrifile(rs.getString("orifile"));
+				res.setSysfile(rs.getString("sysfile"));
+				res.setMovietitle(rs.getString("movietitle"));
+				res.setGenre(rs.getString("genre"));
+				res.setStar(rs.getDouble("star"));
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return res;
+	}
+
+
+	public void insert(ReviewVO re) {
+		try {
+			sql = "select max(no)+1 from movieinfo";
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			if(rs.next())
@@ -86,6 +132,14 @@ public class ComentDAO {
 			stmt.setInt(3, re.getCno());
 			stmt.setString(4, re.getId());
 			stmt.setString(5, re.getContent());
+<<<<<<< HEAD
+=======
+			stmt.setString(6, re.getOrifile());
+			stmt.setString(7, re.getSysfile());
+			stmt.setString(8, re.getMovietitle());
+			stmt.setString(9, re.getGenre());
+			stmt.setDouble(10, re.getStar());
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 
 			System.out.println(stmt.executeUpdate());
 

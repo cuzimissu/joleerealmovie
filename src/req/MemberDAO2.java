@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import file_p.MemberVO;
+import file_p1.MemberVO;
 
 public class MemberDAO2 {
 
