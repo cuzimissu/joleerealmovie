@@ -108,7 +108,7 @@ public class ReviewDAO {
 
 	public void insert(ReviewVO re) {
 		try {
-			sql = "select max(no)+1 from movieinfo";
+			sql = "select max(no)+1 from moviereview";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			if(rs.next())

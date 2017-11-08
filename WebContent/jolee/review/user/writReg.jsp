@@ -1,6 +1,5 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@page import="req.MemberVO"%>
 <%@page import="java.util.Date"%>
 <%@page import="movie.ReviewDAO"%>
 <%@page import="movie.ReviewVO"%>
@@ -9,6 +8,8 @@
 ¸®ºä
 <%@ include file="../../inc/menuData.jsp"%>
 <%
+
+
 	String upfile = request.getRealPath("file");
 
 upfile = "C:/file";

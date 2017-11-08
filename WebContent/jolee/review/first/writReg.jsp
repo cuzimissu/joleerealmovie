@@ -1,6 +1,5 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@page import="req.MemberVO"%>
 <%@page import="java.util.Date"%>
 <%@page import="movie.ReviewDAO"%>
 <%@page import="movie.ReviewVO"%>
@@ -9,6 +8,7 @@
 리뷰
 <%@ include file="../../inc/menuData.jsp" %>
 <%
+
 String upfile = request.getRealPath("file");
 
 
@@ -29,7 +29,6 @@ String upfile = request.getRealPath("file");
 	String genre = "코미디,액션";
 
 
-	//re.setCate((String)request.getAttribute("cate"));
 	re.setCate("first");
 	re.setId(id);
 	
@@ -37,8 +36,6 @@ String upfile = request.getRealPath("file");
 	re.setContent(mm.getParameter("content"));
 	 re.setOrifile(mm.getOriginalFileName("pic"));
 	re.setSysfile(mm.getFilesystemName("pic")); 
-	/*re.setOrifile(request.getParameter("pic"));
-	re.setSysfile(request.getParameter("pic"));*/
 	re.setMovietitle(mm.getParameter("movie"));
 	re.setGenre(genre);
 	re.setStar(Double.parseDouble(mm.getParameter("star")));

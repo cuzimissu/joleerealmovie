@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import file_p1.PicFile;
+import file_p.PicFile;
 
 public class ComentDAO {
 
@@ -33,24 +33,24 @@ public class ComentDAO {
 
 	}
 
-	public ArrayList<ReviewVO> list(String cate) {
-		ArrayList<ReviewVO> res = new ArrayList<>();
+	public ArrayList<ComentVO> list(String cate,int no) {
+		ArrayList<ComentVO> res = new ArrayList<>();
 
 		try {
-			sql = "select * from moviereview where cate = ? order by regdate desc";
+			sql = "select * from moviecoment where cate = ? and no = ? order by regdate desc";
 
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, cate);
+			stmt.setInt(2, no);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				ReviewVO vo = new ReviewVO();
+				ComentVO vo = new ComentVO();
 				vo.setCate(rs.getString("cate"));
 				vo.setNo(rs.getInt("no"));
-				vo.setTitle(rs.getString("title"));
+				vo.setCno(rs.getInt("cno"));
 				vo.setId(rs.getString("id"));
-				vo.setStar(rs.getDouble("star"));
-				vo.setMovietitle(rs.getString("movietitle"));
+				vo.setContent(rs.getString("content"));
 				vo.setRegDate(rs.getTimestamp("regdate"));
 				res.add(vo);
 			}
@@ -65,69 +65,27 @@ public class ComentDAO {
 		return res;
 	}
 
-	public ReviewVO detail(int no) {
-		ReviewVO res = null;
+	
 
+
+	public void insert(ComentVO re) {
 		try {
-			sql = "select * from moviereview where no = ?";
-
-			stmt = con.prepareStatement(sql);
-			// stmt.setString(1, res.getCate());
-			stmt.setInt(1, no);
-			rs = stmt.executeQuery();
-
-			if (rs.next()) {
-				res = new ReviewVO();
-
-				res.setRegDate(rs.getTimestamp("regdate"));
-				res.setCate(rs.getString("cate"));
-				res.setNo(rs.getInt("no"));
-				res.setTitle(rs.getString("title"));
-				res.setId(rs.getString("id"));
-				res.setContent(rs.getString("content"));
-				res.setOrifile(rs.getString("orifile"));
-				res.setSysfile(rs.getString("sysfile"));
-				res.setMovietitle(rs.getString("movietitle"));
-				res.setGenre(rs.getString("genre"));
-				res.setStar(rs.getDouble("star"));
-
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-
-		return res;
-	}
-
-
-	public void insert(ReviewVO re) {
-		try {
-			sql = "select max(no)+1 from movieinfo";
+			sql = "select max(cno)+1 from moviecoment";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			if(rs.next())
-				re.setNo(rs.getInt(1));
-			sql = "insert into moviereview (cate, no, title, id, regdate, "
-					+ "content, orifile, sysfile, movietitle, genre, star) values (" 
-					+ "?,?,?,?,sysdate,?,?,?,?,?,?)";
+				re.setCno(rs.getInt(1));
+			sql = "insert into moviecoment (cate, no,cno, id,content, regdate) values (" 
+					+ "?,?,?,?,?,sysdate)";
 			System.out.println(sql);
 
 			stmt = con.prepareStatement(sql);
 
 			stmt.setString(1, re.getCate());
 			stmt.setInt(2, re.getNo());
-			stmt.setString(3, re.getTitle());
+			stmt.setInt(3, re.getCno());
 			stmt.setString(4, re.getId());
 			stmt.setString(5, re.getContent());
-			stmt.setString(6, re.getOrifile());
-			stmt.setString(7, re.getSysfile());
-			stmt.setString(8, re.getMovietitle());
-			stmt.setString(9, re.getGenre());
-			stmt.setDouble(10, re.getStar());
 
 			System.out.println(stmt.executeUpdate());
 

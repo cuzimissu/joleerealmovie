@@ -9,15 +9,22 @@ public class ComentVO {
 	
 	String cate,id,content;
 
-	Integer no;
-	
-	
+	Integer no,cno;
+
 	Date  regDate;
 	
 
 
 
 	
+	public Integer getCno() {
+		return cno;
+	}
+
+	public void setCno(Integer cno) {
+		this.cno = cno;
+	}
+
 	public String getCate() {
 		return cate;
 	}
