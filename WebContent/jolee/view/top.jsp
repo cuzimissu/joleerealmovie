@@ -10,12 +10,12 @@
 
 
 <div class="gnb">
-<<<<<<< HEAD
+
 <%-- ${ loginPage}
 <jsp:include page="${ loginPage}"/>  --%>
-=======
+
 <%-- <jsp:include page="<%=loginPage%>"/> --%>
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
+
 
 	<%
 		for (String key : top.keySet()) {

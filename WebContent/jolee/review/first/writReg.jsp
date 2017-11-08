@@ -8,7 +8,7 @@
 ¸®ºä
 <%@ include file="../../inc/menuData.jsp" %>
 <%
-System.out.println("WRITErEG");
+
 String upfile = request.getRealPath("file");
 
 
