@@ -8,11 +8,7 @@
 </head>
 <body>
 <script type="text/javascript">
-<<<<<<< HEAD
-	alert('가입 ㅅㅅ');
-=======
-	alert('회원가입 되었습니다');
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
+	alert('회원가입되었습니다.');
 	location.href = 'index.jsp';
 </script>
 </body>

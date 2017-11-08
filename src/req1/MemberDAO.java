@@ -127,7 +127,11 @@ public class MemberDAO {
 				
 				res.setId(rs.getString("id"));
 				res.setName(rs.getString("name"));			
+<<<<<<< HEAD
 				res.setGrade(rs.getString("grade"));
+=======
+				
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 			}
 			
 			

@@ -10,6 +10,10 @@ center/notice/list
  
 <%
 	System.out.println(request.getParameter("id"));
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 	/* 
 	String upfile = request.getRealPath("pic");
 	upfile = "C:\\king\\jolee\\joleemovie\\WebContent\\pic";

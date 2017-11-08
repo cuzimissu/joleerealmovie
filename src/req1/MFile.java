@@ -12,4 +12,8 @@ public class MFile {
 			ff.delete();
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git

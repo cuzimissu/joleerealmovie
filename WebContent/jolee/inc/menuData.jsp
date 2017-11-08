@@ -64,8 +64,16 @@
 	menu.get("mypage").put("sc","스크랩");
 	
 	menu.put("join",new LinkedHashMap());
+<<<<<<< HEAD
 	top.put("join","회원가입");
 
+=======
+	menu.get("join").put("first","회원가입");
+
+	 /*menu.get("join").put("1n1","1:1문의");
+	menu.get("join").put("sc","스크랩"); */
+	
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 		
 	LinkedHashMap<String, String> menuList = menu.get(menuParam);
 	

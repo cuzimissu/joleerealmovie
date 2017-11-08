@@ -5,7 +5,7 @@
 center/notice/list
 <%@ include file="../../inc/menuData.jsp" %>
  
- <%
+<%
  	request.setAttribute("data", new MemberDAO().list());
  %>
  

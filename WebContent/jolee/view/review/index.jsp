@@ -31,7 +31,7 @@ MemberVO res = (MemberVO)session.getAttribute("memlogin");
 		</a>
 		</td>
 		<td><%=vo.getMovietitle() %></td>
-		<td><%for(int i=0; i<=vo.getStar();i++){%>¡Ú<%} %></td>
+		<td><%for(int i=0; i<vo.getStar();i++){%>¡Ú<%} %></td>
 		<td><%=vo.getId() %></td>
 	</tr>
 	<%

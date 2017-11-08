@@ -11,6 +11,11 @@
 	height:30px;
 	border-radius:15px; 
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 </style>
 </head>
 <body>

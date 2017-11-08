@@ -7,6 +7,11 @@
 <%
 	movieVO vo = (movieVO )request.getAttribute("data");
 
+<<<<<<< HEAD
+=======
+	System.out.println(vo);
+
+>>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 %>    
 
 <table border="">
