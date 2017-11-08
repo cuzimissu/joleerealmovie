@@ -40,9 +40,10 @@
 	top.put("review","리뷰");
 	top.put("notice","공지사항");
 	top.put("mypage","마이페이지");
+	top.put("join","회원가입");
 	HashMap<String,LinkedHashMap<String, String>>menu = new HashMap();
 	
-	menu.put("movie",new LinkedHashMap());
+	menu.put("movie", new LinkedHashMap());
 	menu.get("movie").put("first","전체영화");
 	menu.get("movie").put("ing","상영영화");
 	menu.get("movie").put("cc","추천영화");
