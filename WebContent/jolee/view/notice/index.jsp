@@ -12,22 +12,23 @@
 		<td>작성일</td>
 	</tr>
 
+
 <% for(NoticeVO vo : 
 	(ArrayList<NoticeVO>)request.getAttribute("data")) {
 	
 %>
-<tr>
+	<tr>
 		<td><%=vo.getNo() %></td>
 		
 		<td><a href="writeDetail.jsp?no=<%=vo.getNo() %>"><%=vo.getTitle() %></a></td>
 		<td><%=vo.strRegDate() %> </td>
 	</tr>
+	<%} %>	
 
-<%} %>
 	<tr>
 		<td colspan="3" align="right">
-			<a href="write.jsp">글쓰기</a>
-			<td><a href="delete.jsp?no=<%=vo.getNo() %>">삭제</a></td>
+			<a href="writeForm.jsp">글쓰기</a>
 		</td>
 	</tr>
+
 </table>
