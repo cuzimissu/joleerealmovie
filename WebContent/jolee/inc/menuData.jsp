@@ -63,6 +63,9 @@
 	menu.get("mypage").put("1n1","1:1문의");
 	menu.get("mypage").put("sc","스크랩");
 	
+	menu.put("join",new LinkedHashMap());
+	top.put("join","회원가입");
+
 		
 	LinkedHashMap<String, String> menuList = menu.get(menuParam);
 	

@@ -4,8 +4,9 @@
     pageEncoding="EUC-KR"%>
 <%@ include file="../../inc/menuData.jsp" %>
 <%
-/* request.setAttribute("data",  new CenterDAO().list((String)request.getAttribute("cate"))); */
+
 request.setAttribute("data", new movieDAO().list());
+
 %>
 
 <jsp:forward page="../../view/template.jsp"></jsp:forward>

@@ -1,19 +1,28 @@
 
+<%@page import="req1.MemberVO"%>
 <%@page import="lee.movieVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
+
 request.setCharacterEncoding("euc-kr");
 String a = (String)request.getAttribute("cate");
-	
+MemberVO res = (MemberVO)session.getAttribute("memlogin");
+String c  = "개씨발";
+if(res.getGrade().equals("user")){
+	c = "에라이씨발";
+}
 	String b="현재 상영중인 영화를 알려드립니다!";
 	
 %>
 <%if(a.equals("first")){
 	 b="전체 영화의 정보를 알려드립니다.";
-}%>
+}
 
+%>
+<%=res.getGrade() %>
+<%=c %>
 <%=b %>
 
 <script type="text/javascript">
@@ -42,7 +51,7 @@ String a = (String)request.getAttribute("cate");
 		<td>개봉일</td>
 		<td>종료일</td>
 		<td>작성일</td>
-		<%if(a.equals("first")){ %>
+		<%if(a.equals("first")&&res.getGrade()!=null&&res.getGrade().equals("admin")){ %>
 		<td>삭제</td>
 		<%} %>
 	</tr>
@@ -58,14 +67,14 @@ String a = (String)request.getAttribute("cate");
 		<td><%=vo.getReldate() %> </td>
 		<td><%=vo.getClosedate() %> </td>
 		<td><%=vo.getRegdate() %> </td>
-		<%if(a.equals("first")){ %>
+		<%if(a.equals("first")&&res.getGrade()!=null&&res.getGrade().equals("admin")){ %>
 		<td><a href="delete.jsp?no=<%=vo.getNo() %>">삭제</a></td>
 		<%} %>
 	</tr>
 
 <%}
-if(a.equals("first")){%>
-	<tr >
+if(a.equals("first")&&res.getGrade()!=null&&res.getGrade().equals("admin")){%>
+	<tr >	
 		<td colspan="7" align="center" >
 			<a href="uploadmovieform.jsp">글쓰기</a>
 		</td>

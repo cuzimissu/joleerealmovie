@@ -13,7 +13,7 @@
 	
 	
 	mem.setPath(request.getRealPath("ff"));
-	mem.setPath("C:\\king\\work\\jspProj\\WebContent\\ff");
+	mem.setPath("C:/Users/JHTA/git/jolee/joleemovie/WebContent/jolee/file");
 	
 	String msg = "pw가 일치하지 않습니다.";
 	String url = "detail.jsp?id="+mem.getId();

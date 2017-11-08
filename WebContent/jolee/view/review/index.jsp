@@ -1,9 +1,13 @@
+<%@page import="req1.MemberVO"%>
 <%@page import="movie.ReviewVO"%>
 
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-
+<%
+String a = (String)request.getAttribute("cate");
+MemberVO res = (MemberVO)session.getAttribute("memlogin");
+%>
 <%=request.getAttribute("serviceUrl")%>view 페이지
 
 <table border="">
@@ -36,8 +40,9 @@
 	
 </table>
 
-
+	<%if(a.equals("first")&&res.getGrade()!=null&&res.getGrade().equals("user")){ %>
 <a href="writForm.jsp">글쓰기</a>
+<%} %>
 <!-- MemberVO vo = (MemberVO)session.getAttribute("mem");
 
 	if(vo!=null){} -->

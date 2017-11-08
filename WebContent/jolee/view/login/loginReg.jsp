@@ -18,13 +18,13 @@
 
 	if (res != null) {
 		//url = "../../../cateCompany/center/first/index.jsp?memmm=" + res.getName();
-		url = "../../../jolee/center/first/index.jsp?";
+		url = "../../../jolee/movie/first/index.jsp?";
 		msg = res.getName() + "´Ô ·Î±×ÀÎ ÇÏ¼Ì½À´Ï´Ù.";
 
 		session.setAttribute("mem", res.getName());
 
 	}
-	session.setAttribute("idd", request.getParameter("id"));
+	session.setAttribute("id", request.getParameter("id"));
 %>
 
 <script type="text/javascript">

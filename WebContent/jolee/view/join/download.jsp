@@ -7,7 +7,7 @@
 	String ori = request.getParameter("sys");
 	
 	String upfile = request.getRealPath("ff");
-	upfile =  "C:\\king\\work\\jspProj\\WebContent\\ff";
+	upfile =  "C:/Users/JHTA/git/jolee/joleemovie/WebContent/jolee/file";
 	
 	String en = URLEncoder.encode(ori,"utf-8");
 	response.setHeader("Content-Disposition", "attachment;filename="+en);
