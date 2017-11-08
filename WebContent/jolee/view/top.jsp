@@ -23,19 +23,19 @@
 	<div class="btm_link">
 		<%
 			for (String key2 : menuList.keySet()) {
-			if(key2.equals("cc")){
+			if(key2.equals("cc")||key2.equals("1n1")){
 				%>
 				<p>
 					<a href="../<%=key2%>/index2.jsp"><%=menuList.get(key2)%></a>
 				</p>
 				<%
-			}else{
+			 }else{
 		%>
-		<p>
+				<p>
 			<a href="../<%=key2%>/index.jsp"><%=menuList.get(key2)%></a>
 		</p>
 		<%
-			} }
+			 } }
 		%>
 	</div>
 </div>

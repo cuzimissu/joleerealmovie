@@ -53,9 +53,7 @@ request.setCharacterEncoding("euc-kr");
 		
 	</tr>
 
-<%} %>
-<%
-	String a = "包府磊";
+<%}	String a = "包府磊";
 if(a.equals("包府磊")){%>
 	<tr >
 		<td colspan="7" align="center" >
