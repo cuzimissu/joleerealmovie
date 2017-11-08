@@ -23,7 +23,7 @@
 			<td><a href="joinForm.jsp">일반회원</a>
 			<!-- <input type="button" name="sch" class="sch" value="일반회원"/> -->
 			</td>
-			<td><a href="proJoinForm.jsp">전문가회원</a>
+			<td><a href="projoinForm.jsp">전문가회원</a>
 			<!-- <input type="button" name="sch" class="sch" value="전문가회원"/> -->
 			</td>
 		</tr>

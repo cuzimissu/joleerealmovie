@@ -11,44 +11,44 @@
 	height:30px;
 	border-radius:15px; 
 }
-.sch{
-	width:70px;
-	height:30px;
-	border-radius:15px; 
-}
+
 
 </style>
 </head>
 <body>
-<form action="joinReg.jsp" method="post" enctype="multipart/form-data">
+<form action="joinReg.jsp" method="post">
 	<table border=1>
 		<tr>
-			<td>id</td>
+			<td>아이디</td>
 			<td><input type="text" name="id" size="10" maxlength="8" />
 			<input type="button" name="sch" class="sch" value="id중복확인"/>
 			</td>
 		</tr>
 		<tr>
-			<td>pw</td>
-			<td><input type="password" name="pw" /></td>
-		</tr>
-		<tr>
-			<td>name</td>
+			<td>이름</td>
 			<td><input type="text" name="name" /></td>
 		</tr>
 		<tr>
-			<td>gender</td>
+			<td>비밀번호</td>
+			<td><input type="password" name="pw" /></td>
+		</tr>
+		<tr>
+			<td>비밀번호확인</td>
+			<td><input type="password" name="pwc" /></td>
+		</tr>
+		<tr>
+			<td>성별</td>
 			<td>
 				<input type="radio" name="gender" checked="checked" value="m"/>남
 				<input type="radio" name="gender"  value="f"/>여
 			</td>
 		</tr>
 		<tr>
-			<td>nick</td>
+			<td>닉네임</td>
 			<td><input type="text" name="nick" /></td>
 		</tr>
 		<tr>
-			<td>phone</td>
+			<td>핸드폰</td>
 			<td><input type="text" name="phone" /></td>
 		</tr>
 		<tr>
@@ -64,18 +64,25 @@
 				</select>
 			</td>
 		</tr>
+		<!-- <tr>
+			<td>첨부파일</td>
+			<td><input type="file" name="file" /></td>
+		</tr> -->
 		<tr>
-			<td>프로필</td>
-			<td><input type="file" name="profile" /></td>
+			<td>관심장르</td>
+			<td>
+				<select name="genre">
+					<option value="action" selected="selected">장르선택</option>
+					<option value="action">action</option>
+					<option value="fantasy">fantasy</option>
+					<option value="melo" >melo</option>
+					<option value="mystery">mystery</option>
+					<option value="noir">noir</option>
+					<option value="horror">horror</option>
+				</select>
+			</td>
 		</tr>
-		<tr>
-			<td>genre</td>
-			<td><input type="text" name="genre" /></td>
-		</tr>
-		<tr>
-			<td>grade</td>
-			<td><input type="text" name="grade" /></td>
-		</tr>
+
 		<!-- <tr>
 			<td>취미</td>
 			<td>
