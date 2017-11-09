@@ -1,6 +1,8 @@
+<%@page import="req1.MemberDAO"%>
+<%@page import="req1.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<<<<<<< HEAD
+
 <%
 	request.setCharacterEncoding("euc-kr");
 	
@@ -24,8 +26,7 @@
 	}
 	
 	%>    
-=======
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

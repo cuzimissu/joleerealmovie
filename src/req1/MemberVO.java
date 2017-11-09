@@ -1,13 +1,11 @@
 package req1;
 
-<<<<<<< HEAD
-=======
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
 public class MemberVO {
 
 	String id, pw, gender, email, nick, phone,genre,grade,
@@ -150,8 +148,6 @@ public class MemberVO {
 	}
 
 
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/cuzimissu/joleerealmovie.git
+
